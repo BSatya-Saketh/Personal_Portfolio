@@ -184,6 +184,25 @@ section{padding:100px 60px;border-top:1px solid var(--border)}
 .project-desc{font-size:.78rem;line-height:1.7;color:var(--gray3);margin-bottom:24px}
 .project-tech{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;color:var(--gray3)}
 
+.project-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: .55rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    transition: color .2s, border-color .2s;
+}
+.project-card:hover .project-link {
+    border-color: rgba(0,0,0,.3);
+    color: rgba(0,0,0,.8);
+}
+.project-card:hover .project-link:hover {
+    color: rgba(0,0,0,.5);
+}
+
 /* CERTS */
 .certs-grid{display:grid;grid-template-columns:repeat(2,1fr)}
 .cert-item{
@@ -274,15 +293,16 @@ const DATA = {
   university: "SR University",
   email: "b.satyasaketh@gmail.com",
   phone: "+91 9515754999",
-  github: "https://github.com/SatyaSaketh",
-  linkedin: "https://linkedin.com/in/Satya-Saketh",
+  github: "https://github.com/BSatya-Saketh",
+  linkedin: "https://www.linkedin.com/in/satya-saketh-bollepally/",
+    leetcode: "https://leetcode.com/u/B_Satya_Saketh/",
 
   education: [
     {
       school: "SR University, Warangal",
-      degree: "B.Tech — Computer Science & Engineering",
+      degree: "B.Tech — Computer Science & Engineering (International Engineering Program)",
       meta: "Aug 2023 – May 2027",
-      desc: "CGPA: 9.41 | Courses: Data Structures, OS, Discrete Math, 3-Tier Web Architecture, Computer Networks, DAA, MVC Design Pattern, ORM."
+      desc: "CGPA: 9.35 | Courses: Data Structures, OS, Discrete Math, 3-Tier Web Architecture, Computer Networks, DAA, MVC Design Pattern, ORM."
     }
   ],
 
@@ -314,7 +334,7 @@ const DATA = {
     { category: "Web Development",        tags: ["HTML", "CSS", "Angular.js", "jQuery", "AJAX", "XML"] },
     { category: "Backend & Frameworks",   tags: ["Spring", "Spring Boot", "Servlets", "JSP", "JavaBeans"] },
     { category: "Databases & Tools",      tags: ["MySQL", "Oracle", "JDBC", "Git", "GitHub"] },
-    { category: "Networking & Adv. Java", tags: ["Socket Programming", "Multi-threading", "Java Swing", "Java NIO"] }
+    { category: "Networking & Adv. Java", tags: ["Socket Programming", "Multi-threading", "Java Swing", "Java GUI"] }
   ],
 
   projects: [
@@ -322,32 +342,44 @@ const DATA = {
       name: "JobTrackerPro",
       desc: "Full-stack job tracking system with MVC architecture, DAO layer, JDBC PreparedStatement for CRUD, and a responsive CSS dashboard with zero external UI libs.",
       tech: "Java 25 · Servlets · JDBC · MySQL · HTML · CSS",
-      date: "Mar 2026"
+      date: "Mar 2026",
+        github: "https://github.com/BSatya-Saketh/JobTracker"
     },
     {
       name: "LeetSync",
       desc: "Chrome Extension automating LeetCode→GitHub sync via MutationObserver DOM scraping, GitHub REST API via Background Service Workers, auto-generating analytics dashboards.",
       tech: "JavaScript · Chrome Extensions API · GitHub REST API",
-      date: "Mar 2026"
+      date: "May 2026",
+        github: "https://github.com/BSatya-Saketh/LeetSync-V3"
     },
     {
       name: "Multi-Client Chat System",
       desc: "Real-time GUI chat system with Java Swing. Multi-threaded socket programming for simultaneous clients, direct messaging, broadcasting, and custom message framing protocol.",
       tech: "Java 17 · Socket Programming · Java Swing",
-      date: "Nov 2025"
+      date: "Nov 2024",
+        github: "https://github.com/BSatya-Saketh/Projects/tree/main/Multi-Client%20Communication"
     },
     {
       name: "Anomaly Detection via RL",
       desc: "Custom RL environment for IoT network traffic. DQN achieved 98% accuracy, 100% recall, 93% F1-score on the WUSTL IIOT 2021 dataset.",
       tech: "Python · PyTorch · Deep Q-Network",
-      date: "Jan 2026"
+      date: "May 2025",
+        github: "https://github.com/BSatya-Saketh/Projects/tree/main/Reinforcement%20Learning%201"
     },
     {
       name: "FL-Based IoT Architecture",
       desc: "Six-layer IoT prototype with federated learning. Integrated Transformer + Autoencoder for distributed anomaly detection across edge-to-cloud layers.",
       tech: "Python · TensorFlow · Federated Learning",
-      date: "May 2025"
-    }
+      date: "July 2025",
+        github: "https://github.com/BSatya-Saketh/Prototype-of-IOT-Architecture"
+    },
+      {
+          name: "Whats-Next",
+          desc: "Static website developed with a purpose of helping Govt. School students to explore the different streams available after 10th and 12th.",
+          tech: "HTML · CSS",
+          date: "March 2025",
+          github: "https://github.com/BSatya-Saketh/What-s-Next-Project"
+      }
   ],
 
   certifications: [
@@ -502,6 +534,7 @@ const Hero = () => (
       <a className="btn" href="#projects">View Work</a>
       <a className="btn" href="#contact">Get In Touch</a>
       <a className="btn" href={DATA.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a className="btn" href={DATA.leetcode} target="_blank" rel="noopener noreferrer">LeetCode ↗</a>
     </div>
   </section>
 );
@@ -511,10 +544,10 @@ const About = () => (
     <div className="section-heading reveal">About</div>
     <div className="stats-grid">
       {[
-        { label:"CGPA",              num:"9.41" },
+        { label:"CGPA",              num:"9.35" },
         { label:"LeetCode Problems", num:"350+" },
-        { label:"Projects Built",    num:"5+"   },
-        { label:"Internships",       num:"2"    }
+        { label:"Projects Built",    num:"10+"   },
+        { label:"Internships",       num:"1"    }
       ].map(({ label, num }) => (
         <div className="reveal" key={label}>
           <div className="stat-item">
@@ -583,6 +616,11 @@ const Projects = () => (
           <div className="project-name">{p.name}</div>
           <div className="project-desc">{p.desc}</div>
           <div className="project-tech">{p.tech}</div>
+            {p.github && (
+                <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                    View Source ↗
+                </a>
+            )}
         </div>
       ))}
     </div>
@@ -613,8 +651,9 @@ const Contact = () => (
           {[
             { label:"Email",    value: DATA.email,        href:`mailto:${DATA.email}` },
             { label:"Phone",    value: DATA.phone,        href:`tel:${DATA.phone}` },
-            { label:"GitHub",   value:"SatyaSaketh",      href: DATA.github },
-            { label:"LinkedIn", value:"in/Satya-Saketh",  href: DATA.linkedin }
+            { label:"GitHub",   value:"Git/SatyaSaketh",      href: DATA.github },
+            { label:"LinkedIn", value:"in/Satya-Saketh",  href: DATA.linkedin },
+              {label:"Projects", value:"Git/Projects", href:"https://github.com/BSatya-Saketh/Projects"}
           ].map(({ label, value, href }) => (
             <a className="contact-link" href={href} key={label} target="_blank" rel="noopener noreferrer">
               <span className="cl-label">{label}</span>
@@ -626,6 +665,7 @@ const Contact = () => (
       <div className="reveal contact-right">
         {[
           { label:"GitHub",   value:"github.com/SatyaSaketh",       href: DATA.github },
+            {label:"Projects", value:"github.com/SatyaSaketh/Projects", href:"https://github.com/BSatya-Saketh/Projects"},
           { label:"LinkedIn", value:"linkedin.com/in/Satya-Saketh", href: DATA.linkedin },
           { label:"Email",    value: DATA.email,                     href:`mailto:${DATA.email}` }
         ].map(({ label, value, href }) => (
